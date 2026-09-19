@@ -8,13 +8,13 @@ on:
 env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: ai-inference
-  EKS_CLUSTER: mlops-cluster
 
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r app/requirements.txt
-        pip install pytest flake8
+        pip install flake8
 
     - name: Lint
       run: flake8 app/ --count --select=E9,F63,F7,F82 --show-source --statistics
@@ -49,24 +49,5 @@ jobs:
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-
-  deploy:
-    needs: test-and-build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
-
-    - name: Update kubeconfig
-      run: aws eks update-kubeconfig --name ${{ env.EKS_CLUSTER }} --region ${{ env.AWS_REGION }}
-
-    - name: Deploy to EKS
-      run: |
-        kubectl apply -f k8s/
-        kubectl rollout status deployment/ai-inference-service --timeout=300s
+        echo "Image pushed successfully!"
+        echo "Image URI: $ECR_REGISTRY/$ECR_REPOSITORY:latest"
