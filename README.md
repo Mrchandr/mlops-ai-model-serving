@@ -61,7 +61,7 @@ docker run -d -p 8000:8000 --name ai-inference ai-inference:latest
 ## Deploy on EC2
 
 docker run -d -p 8000:8000 --name ai-inference \
-  <AWS_ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/ai-inference:latest
+  881940379792.dkr.ecr.ap-south-1.amazonaws.com/ai-inference:latest
 
 ## API Endpoints
 
