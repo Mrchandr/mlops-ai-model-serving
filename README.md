@@ -52,7 +52,7 @@ pip install -r app/requirements.txt
 cd app
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
-Open: http://localhost:8000/docs
+Open: http://65.0.180.141:8000/docs
 
 # Using Docker
 
