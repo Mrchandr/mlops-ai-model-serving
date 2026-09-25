@@ -38,7 +38,6 @@ mlops-ai-model-serving/
 │   └── Dockerfile
 ├── .github/workflows/
 │   └── ci-cd.yml
-├── k8s/
 └── README.md
 
 ## How to Run Locally
@@ -73,6 +72,6 @@ docker run -d -p 8000:8000 --name ai-inference \
 | `/predict`   | POST   | Make prediction              |
 | `/docs`      | GET    | Swagger UI documentation     |
 
-Author
+##Author
 Chandrasekhar Sai Durga Gummadi
 DevOps & Cloud Engineer | AIML Graduate
