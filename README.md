@@ -1,6 +1,12 @@
 # End-to-End MLOps Pipeline for AI Model Serving on AWS
 
-This project demonstrates a complete MLOps pipeline that automatically builds, containerizes, and deploys an AI inference service on AWS.
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-2088FF?logo=githubactions)
+![AWS](https://img.shields.io/badge/AWS-EC2%20%2B%20ECR-FF9900?logo=amazon-aws)
+
+Automated CI/CD pipeline that builds a FastAPI AI inference service, containerizes it with Docker, pushes the image to **Amazon ECR**, and deploys it on **AWS EC2**.
 
 ## What This Project Does
 
