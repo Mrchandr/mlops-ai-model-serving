@@ -6,7 +6,7 @@ from model import ModelService
 
 app = FastAPI(
     title="AI Model Inference API",
-    description="High-throughput FastAPI server for model serving on AWS EKS",
+    description="High-throughput FastAPI server for AI Model Inference",
     version="1.0.0"
 )
 
